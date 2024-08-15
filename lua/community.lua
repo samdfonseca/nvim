@@ -8,7 +8,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.bash" },
-  { import = "astrocommunity.pack.clojure" },
+  -- { import = "astrocommunity.pack.clojure" },
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.go" },

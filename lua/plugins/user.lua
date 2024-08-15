@@ -82,4 +82,31 @@ return {
       )
     end,
   },
+
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("neotest").setup {
+        adapters = {
+          require "neotest-python" {
+            dap = { justMyCode = false },
+            pytest_discover_instances = true,
+            -- python = function()
+            --   if vim.fn.has_key(vim.fn.environ(), "CONDA_PREFIX") then
+            --     return vim.fn.getenv "CONDA_PREFIX" .. "/bin/python3"
+            --   end
+            --   return "python3"
+            -- end,
+          },
+          require "rustaceanvim.neotest",
+        },
+      }
+    end,
+  },
 }

@@ -70,6 +70,36 @@ return {
         ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+        ["<Leader>T"] = { desc = "Test" },
+        ["<Leader>Tr"] = {
+          function() require("neotest").run.run() end,
+          desc = "Run current test",
+        },
+        ["<Leader>TR"] = {
+          function() require("neotest").run.run(vim.fn.expand "%") end,
+          desc = "Run whole file",
+        },
+        ["<Leader>Tt"] = {
+          function()
+            require("neotest").output.open {
+              enter = true,
+              auto_close = true,
+            }
+          end,
+          desc = "Toggle output panel",
+        },
+        ["<Leader>TT"] = {
+          function() require("neotest").summary.toggle() end,
+          desc = "Toggle summary panel",
+        },
+        ["<Leader>Td"] = {
+          function() require("neotest").run.run { strategy = "dap", suite = false } end,
+          desc = "Debug current test",
+        },
+        ["<Leader>TD"] = {
+          function() require("neotest").run.run { vim.fn.expand "%", strategy = "dap", suite = false } end,
+          desc = "Debug whole file",
+        },
       },
       t = {
         -- setting a mapping to false will disable it
