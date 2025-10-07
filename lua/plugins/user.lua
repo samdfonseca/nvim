@@ -95,17 +95,18 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require("neotest").setup {
         adapters = {
+          -- require "neotest-plenary",
           require "neotest-python" {
             dap = { justMyCode = false },
             pytest_discover_instances = true,
-            -- python = function()
-            --   if vim.fn.has_key(vim.fn.environ(), "CONDA_PREFIX") then
-            --     return vim.fn.getenv "CONDA_PREFIX" .. "/bin/python3"
-            --   end
-            --   return "python3"
-            -- end,
+            python = function()
+              local venv_python = require("venv-selector").python()
+              if venv_python == nil then return "python3" end
+              return venv_python
+            end,
           },
           require "rustaceanvim.neotest",
         },
