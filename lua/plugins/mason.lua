@@ -14,6 +14,8 @@ return {
         -- install language servers
         "lua-language-server",
         "rust-analyzer",
+        "vim-language-server",
+        "gh-actions-language-server",
         "basedpyright",
         "clangd",
 
@@ -26,6 +28,12 @@ return {
         -- install any other package
         "tree-sitter-cli",
       },
+    },
+  },
+  {
+    "mason-org/mason.nvim",
+    opts = {
+      log_level = vim.log.levels.DEBUG,
     },
   },
 }

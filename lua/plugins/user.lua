@@ -107,6 +107,7 @@ return {
               if venv_python == nil then return "python3" end
               return venv_python
             end,
+            runner = "pytest",
           },
           require "rustaceanvim.neotest",
         },
