@@ -6,11 +6,11 @@
 vim.o.exrc = true
 vim.o.secure = true
 
-vim.filetype.add {
-  pattern = {
-    [".*/%.github[%w/]+workflows[%w/]+.*%.ya?ml"] = "yaml.github",
-  },
-}
+-- vim.filetype.add {
+--   pattern = {
+--     [".*/%.github[%w/]+workflows[%w/]+.*%.ya?ml"] = "yaml.github",
+--   },
+-- }
 
 -- local ansible_dirs = {
 --   "**/ansible",         -- e.g. project/infra/automation/...

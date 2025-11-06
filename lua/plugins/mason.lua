@@ -12,18 +12,50 @@ return {
       -- Make sure to use the names found in `:Mason`
       ensure_installed = {
         -- install language servers
-        "lua-language-server",
-        "rust-analyzer",
-        "vim-language-server",
-        "gh-actions-language-server",
+        "ansible-language-server",
         "basedpyright",
+        "bash-language-server",
         "clangd",
+        "docker-compose-language-service",
+        "dockerfile-language-server",
+        "gh-actions-language-server",
+        "gopls",
+        "jq-lsp",
+        "json-lsp",
+        "lua-language-server",
+        "neocmakelsp",
+        "nginx-language-server",
+        "rust-analyzer",
+        "starlark-rust",
+        "terraform-ls",
+        "vim-language-server",
+
+        -- linters
+        "actionlint",
+        "ruff",
+        "selene",
+        "shellcheck",
+        "terraform",
+        "tflint",
+        "tfsec",
 
         -- install formatters
+        "goimports",
+        "gomodifytags",
+        "gotests",
+        "hclfmt",
+        "nginx-config-formatter",
+        "shfmt",
         "stylua",
+        "taplo",
+        "yamlfmt",
 
         -- install debuggers
+        "bash-debug-adapter",
+        "codelldb",
         "debugpy",
+        "delve",
+        "local-lua-debugger-vscode",
 
         -- install any other package
         "tree-sitter-cli",

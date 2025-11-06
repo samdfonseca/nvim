@@ -45,8 +45,11 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       clangd = {
-        cmd = {"clangd", "--background-index", "--clang-tidy", "--log=verbose"},
-        capabilities = { offsetEncoding = "utf-8" }
+        cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+        capabilities = { offsetEncoding = "utf-8" },
+      },
+      gh_actions_ls = {
+        -- single_file_support = true,
       },
     },
     -- customize how language servers are attached
@@ -57,6 +60,10 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+      -- gh_actions_ls = function(_, opts)
+      --   opts.root_markers = vim.tbl_deep_extend('force', opts.root_markers or {}, {'.github/actions'})
+      --   require("lspconfig").gh_actions_ls.setup(opts)
+      -- end
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
@@ -98,11 +105,32 @@ return {
         },
       },
     },
+    mason_lspconfig = {
+      -- Allow registering more Mason packages as language servers for autodetection/setup
+      servers = {
+        -- The key is the lspconfig server name to register a package for
+        gh_actions_ls = {
+          package = "gh-actions-language-server",
+          filetypes = { "yaml" },
+          config = {
+            cmd = { "gh-actions-language-server", "--stdio" },
+            root_markers = { ".github/workflows" },
+            capabilities = {
+              workspace = {
+                didChangeWorkspaceFolders = {
+                  dynamicRegistration = true,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
-    on_attach = function(client, bufnr)
-      -- this would disable semanticTokensProvider for all clients
-      -- client.server_capabilities.semanticTokensProvider = nil
-    end,
+    -- on_attach = function(client, bufnr)
+    -- this would disable semanticTokensProvider for all clients
+    -- client.server_capabilities.semanticTokensProvider = nil
+    -- end,
   },
 }
