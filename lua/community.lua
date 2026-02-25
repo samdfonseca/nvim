@@ -13,10 +13,11 @@ return {
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.python-ruff" },
+  -- { import = "astrocommunity.pack.python-ruff" },
   -- { import = "astrocommunity.pack.ruby" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.debugging.telescope-dap-nvim" },
   { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
+  { import = "astrocommunity.ai.opencode-nvim" },
   -- import/override with your plugins folder
 }

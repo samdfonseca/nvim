@@ -51,6 +51,9 @@ return {
       gh_actions_ls = {
         -- single_file_support = true,
       },
+      neocmake = {
+        cmd = { "neocmakelsp", "stdio" }, -- newer versions use subcommand instead of --stdio
+      },
     },
     -- customize how language servers are attached
     handlers = {

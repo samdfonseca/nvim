@@ -13,7 +13,6 @@ return {
       ensure_installed = {
         -- install language servers
         "ansible-language-server",
-        "basedpyright",
         "bash-language-server",
         "clangd",
         "docker-compose-language-service",
@@ -28,6 +27,7 @@ return {
         "rust-analyzer",
         "starlark-rust",
         "terraform-ls",
+        "ty",
         "vim-language-server",
 
         -- linters
