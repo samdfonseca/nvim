@@ -5,7 +5,8 @@ return {
     ---@type AstroLSPOpts
     opts = {
       ---@diagnostic disable: missing-fields
-      config = {},
+      config = {
+      },
     },
   },
   {
@@ -21,14 +22,14 @@ return {
     "williamboman/mason-lspconfig.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "ty" })
     end,
   },
   {
     "jay-babu/mason-null-ls.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "ty" })
     end,
   },
   {
@@ -45,7 +46,7 @@ return {
     optional = true,
     opts = function(_, opts)
       opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "ruff", "debugpy" })
+        require("astrocore").list_insert_unique(opts.ensure_installed, { "ruff", "debugpy", "ty", "pyrefly" })
     end,
   },
   {
@@ -76,6 +77,7 @@ return {
         ft = "python", -- NOTE: ft: lazy-load on filetype
         config = function(_, opts)
           local path = vim.fn.exepath "debugpy-adapter"
+          if path == "" then path = vim.fn.exepath "uv" end
           if path == "" then path = vim.fn.exepath "python" end
           require("dap-python").setup(path, opts)
         end,

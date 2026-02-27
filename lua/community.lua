@@ -11,6 +11,7 @@ return {
   -- { import = "astrocommunity.pack.clojure" },
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.lua" },
   -- { import = "astrocommunity.pack.python-ruff" },
