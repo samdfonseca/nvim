@@ -39,6 +39,7 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
+      "ty",
       -- "pyright"
     },
     -- customize language server configuration options passed to `lspconfig`
@@ -67,6 +68,14 @@ return {
       --   opts.root_markers = vim.tbl_deep_extend('force', opts.root_markers or {}, {'.github/actions'})
       --   require("lspconfig").gh_actions_ls.setup(opts)
       -- end
+      ty = function(_, opts)
+        vim.lsp.config('ty', {
+          cmd = { 'ty', 'server' },
+          filetypes = { 'python' },
+          root_markers = { 'ty.toml', 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git' },
+        })
+        vim.lsp.enable('ty')
+      end
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
@@ -125,6 +134,14 @@ return {
                 },
               },
             },
+          },
+        },
+        ty = {
+          package = "ty",
+          filetypes = { "python" },
+          config = {
+            cmd = { "ty", "server" },
+            root_markers = { "ty.toml", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
           },
         },
       },

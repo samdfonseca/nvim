@@ -20,5 +20,6 @@ return {
   { import = "astrocommunity.debugging.telescope-dap-nvim" },
   { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
   { import = "astrocommunity.ai.opencode-nvim" },
+  { import = "astrocommunity.utility.lua-json5" },
   -- import/override with your plugins folder
 }
